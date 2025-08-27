@@ -1,0 +1,12 @@
+# Бинарники
+subscription-service
+
+# Папки Go
+bin/
+pkg/
+
+# Файлы конфигурации
+.env
+
+# Docker volumes
+docker-compose.override.yml
