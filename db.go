@@ -10,7 +10,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func ConnectDB() *pgx.Conn {
+func ConnectDB() (*pgx.Conn, error) {
 	if err := godotenv.Load(); err != nil {
 		log.Fatalf("Ошибка при загрузке .env: %v", err)
 	}
@@ -29,5 +29,6 @@ func ConnectDB() *pgx.Conn {
 		log.Fatalf("Не удалось подключиться к базе данных: %v", err)
 	}
 
-	return conn
+	log.Println("База данных подключена")
+	return conn, nil
 }

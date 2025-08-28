@@ -2,15 +2,10 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
 	"log"
 	"net/http"
-	"os"
-
-	"github.com/gorilla/mux"
-	"github.com/jackc/pgx/v5"
-	"github.com/joho/godotenv"
-	httpSwagger "github.com/swaggo/http-swagger"
 	_ "subscription-service/docs"
 )
 
@@ -21,27 +16,12 @@ import (
 // @BasePath /
 func main() {
 
-	// .env
-	if err := godotenv.Load(); err != nil {
-		log.Fatalf("Ошибка при загрузке .env: %v", err)
-	}
-
-	// БД
-	dbURL := fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_PORT"),
-		os.Getenv("DB_NAME"),
-	)
-	conn, err := pgx.Connect(context.Background(), dbURL)
+	//БД
+	conn, err := ConnectDB()
 	if err != nil {
-		log.Fatalf("Не удалось подключиться к базе данных: %v", err)
+		log.Fatalf("Ошибка подключения к БД: %v", err)
 	}
 	defer conn.Close(context.Background())
-
-	log.Println("База данных подключена")
 
 	r := mux.NewRouter()
 
@@ -52,8 +32,10 @@ func main() {
 	r.HandleFunc("/subscriptions/{id}", DeleteSubscriptionHandler(conn)).Methods("DELETE")
 	r.HandleFunc("/subscriptions", CreateSubscriptionHandler(conn)).Methods("POST")
 	r.HandleFunc("/subscriptions", GetSubscriptionsHandler(conn)).Methods("GET")
+
 	// Swagger UI доступен по адресу http://localhost:8080/swagger/index.html
 	r.PathPrefix("/swagger/").Handler(httpSwagger.WrapHandler)
+
 	port := "8080"
 	log.Printf("Сервер запущен на http://localhost:%s\n", port)
 	if err := http.ListenAndServe(":"+port, r); err != nil {
