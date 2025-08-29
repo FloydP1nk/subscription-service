@@ -76,7 +76,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.Subscription"
+                            "$ref": "#/definitions/main.CreateSubscriptionRequest"
                         }
                     }
                 ],
@@ -268,28 +268,39 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Подписка удалена",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Подписка удалена"
                     },
                     "404": {
-                        "description": "Подписка не найдена",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Подписка не найдена"
                     },
                     "500": {
-                        "description": "Ошибка сервера",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "Ошибка сервера"
                     }
                 }
             }
         }
     },
     "definitions": {
+        "main.CreateSubscriptionRequest": {
+            "type": "object",
+            "properties": {
+                "end_date": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "integer"
+                },
+                "service_name": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
         "main.Subscription": {
             "description": "Сущность подписки",
             "type": "object",

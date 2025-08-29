@@ -17,7 +17,7 @@ import (
 // @Tags subscriptions
 // @Accept json
 // @Produce json
-// @Param subscription body Subscription true "Данные подписки"
+// @Param subscription body CreateSubscriptionRequest true "Данные подписки"
 // @Success 201 {object} Subscription
 // @Failure 400 {string} string "Неверный формат данных"
 // @Failure 500 {string} string "Ошибка сервера"
@@ -201,9 +201,9 @@ func UpdateSubscriptionHandler(conn *pgx.Conn) http.HandlerFunc {
 // @Tags subscriptions
 // @Produce json
 // @Param id path string true "ID подписки"
-// @Success 200 {string} string "Подписка удалена"
-// @Failure 404 {string} string "Подписка не найдена"
-// @Failure 500 {string} string "Ошибка сервера"
+// @Success 200  "Подписка удалена"
+// @Failure 404  "Подписка не найдена"
+// @Failure 500  "Ошибка сервера"
 // @Router /subscriptions/{id} [delete]
 func DeleteSubscriptionHandler(conn *pgx.Conn) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
