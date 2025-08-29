@@ -6,6 +6,8 @@ FROM golang:1.25-alpine AS builder
 # Рабочая директория
 WORKDIR /app
 
+RUN go install github.com/swaggo/swag/cmd/swag@latest
+
 # Копируем файлы модулей
 COPY go.mod go.sum ./
 
@@ -14,6 +16,8 @@ RUN go mod download
 
 # Копируем весь проект (все .go файлы должны быть в одном пакете main)
 COPY . .
+
+RUN swag init -g main.go
 
 # Собираем бинарник
 RUN go build -o subscription-service .

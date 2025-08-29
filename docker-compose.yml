@@ -26,8 +26,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/app
-    command: sh -c "swag init -g main.go -o ./docs && go run main.go"
+      - ./docs:/app/docs
 
 volumes:
   db_data:
