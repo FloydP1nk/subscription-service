@@ -285,25 +285,32 @@
     },
     "definitions": {
         "main.Subscription": {
+            "description": "Сущность подписки",
             "type": "object",
             "properties": {
                 "end_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025-09-29T14:30:00Z"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
                 },
                 "price": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 100
                 },
                 "service_name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "MyService"
                 },
                 "start_date": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025-08-29T14:30:00Z"
                 },
                 "user_id": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
                 }
             }
         }
