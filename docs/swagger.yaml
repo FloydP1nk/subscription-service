@@ -19,7 +19,6 @@ definitions:
         example: "2025-08-29T14:30:00Z"
         type: string
       user_id:
-        example: f47ac10b-58cc-4372-a567-0e02b2c3d479
         type: string
     type: object
 host: localhost:8080
@@ -91,7 +90,7 @@ paths:
     delete:
       description: Удаляет подписку по ID
       parameters:
-      - description: UUID подписки
+      - description: ID подписки
         in: path
         name: id
         required: true
@@ -115,9 +114,9 @@ paths:
       tags:
       - subscriptions
     get:
-      description: Возвращает подписку по её UUID
+      description: Возвращает подписку по её ID
       parameters:
-      - description: UUID подписки
+      - description: ID подписки
         in: path
         name: id
         required: true
@@ -145,7 +144,7 @@ paths:
       - application/json
       description: Обновляет данные подписки по ID
       parameters:
-      - description: UUID подписки
+      - description: ID подписки
         in: path
         name: id
         required: true

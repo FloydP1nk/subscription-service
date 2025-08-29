@@ -159,7 +159,7 @@ const docTemplate = `{
         },
         "/subscriptions/{id}": {
             "get": {
-                "description": "Возвращает подписку по её UUID",
+                "description": "Возвращает подписку по её ID",
                 "produces": [
                     "application/json"
                 ],
@@ -170,7 +170,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UUID подписки",
+                        "description": "ID подписки",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -212,7 +212,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UUID подписки",
+                        "description": "ID подписки",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -260,7 +260,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "UUID подписки",
+                        "description": "ID подписки",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -315,8 +315,7 @@ const docTemplate = `{
                     "example": "2025-08-29T14:30:00Z"
                 },
                 "user_id": {
-                    "type": "string",
-                    "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                    "type": "string"
                 }
             }
         }

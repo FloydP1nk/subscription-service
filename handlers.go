@@ -114,10 +114,10 @@ func GetSubscriptionsHandler(conn *pgx.Conn) http.HandlerFunc {
 
 // GetSubscriptionByIDHandler godoc
 // @Summary Получить подписку по ID
-// @Description Возвращает подписку по её UUID
+// @Description Возвращает подписку по её ID
 // @Tags subscriptions
 // @Produce json
-// @Param id path string true "UUID подписки"
+// @Param id path string true "ID подписки"
 // @Success 200 {object} Subscription
 // @Failure 404 {string} string "Подписка не найдена"
 // @Failure 500 {string} string "Ошибка сервера"
@@ -152,7 +152,7 @@ func GetSubscriptionByIDHandler(conn *pgx.Conn) http.HandlerFunc {
 // @Tags subscriptions
 // @Accept json
 // @Produce json
-// @Param id path string true "UUID подписки"
+// @Param id path string true "ID подписки"
 // @Param subscription body Subscription true "Новые данные подписки"
 // @Success 200 {object} Subscription
 // @Failure 400 {string} string "Неверный формат данных"
@@ -200,7 +200,7 @@ func UpdateSubscriptionHandler(conn *pgx.Conn) http.HandlerFunc {
 // @Description Удаляет подписку по ID
 // @Tags subscriptions
 // @Produce json
-// @Param id path string true "UUID подписки"
+// @Param id path string true "ID подписки"
 // @Success 200 {string} string "Подписка удалена"
 // @Failure 404 {string} string "Подписка не найдена"
 // @Failure 500 {string} string "Ошибка сервера"
